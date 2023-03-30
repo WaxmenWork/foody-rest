@@ -1,0 +1,25 @@
+<ion-content [fullscreen]="true">
+  <ion-img class="login-page-figure" src="assets/login_page_figure.svg"></ion-img>
+  <div class="login-content flex-center flex-column">
+    <h1 class="login-title">Авторизация</h1>
+    <h2 class="login-subtitle">Пожалуйста, войдите в систему, чтобы продолжить</h2>
+    <!-- <form [formGroup]="login"> -->
+      <ion-list no-lines>
+        <ion-item class="login-entry" lines="none">
+          <ion-label class="login-label" position="stacked">Введите номер</ion-label>
+          <ion-input class="login-input" placeholder="+7" type="tel" ngModel email></ion-input>
+          <ion-note slot="error">Некорректный номер</ion-note>
+        </ion-item>
+        <ion-item class="login-entry" lines="none">
+          <ion-label class="login-label" position="stacked">Введите пароль</ion-label>
+          <ion-input class="login-input" placeholder="Пароль" type="password"></ion-input>
+        </ion-item>
+        <div class="auth-buttons">
+          <ion-button class="login-button" size="full" shape="round">Войти</ion-button>
+          <ion-button class="forgot-button" size="full" fill="clear" color="tertiary">Забыли логин или пароль?</ion-button>
+        </div>
+      </ion-list>
+      <ion-img class="login-logo" src="assets/logo/FOODYLOGO.svg"></ion-img>
+    <!-- </form> -->
+  </div>
+</ion-content>

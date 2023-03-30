@@ -1,0 +1,97 @@
+.login-content {
+    font-family: 'Montserrat';
+    padding: 0 2.25em;
+    z-index: 100;
+}
+
+.login-page-figure {
+    position: absolute;
+    border: 0;
+    width: min(50vw, 50vh);
+    height: min(50vw, 50vh);;
+}
+
+.login-title {
+    font-weight: 700;
+    font-size: min(5vw, 3.333vh);
+    //line-height: 20.8px;
+    text-align: center;
+    margin: 90px 0 10px 0;
+}
+
+.login-subtitle {
+    font-weight: 700;
+    font-size: min(4.625vw, 2.7083vh);
+    //line-height: 16.9px;
+    text-align: center;
+    margin: 0 0 30px 0;
+}
+
+.login-input {
+    --color: #000;
+    font-weight: 600;
+    font-size: min(4.375vw, 2.916vh);
+    width: 52.5vw;
+    --padding-top: 2.5vh;
+    --padding-bottom: 2.5vh;
+    --background: #F9F2F0;
+    border-radius: 7px;
+    --padding-start: 20px;
+    --placeholder-color: var(--ion-color-primary);
+    
+}
+.login-label {
+    font-weight: 500;
+    height: 2.87vh;
+    font-size: min(4.325vw, 2.87vh);
+    font-family: 'Montserrat';
+    line-height: 16.9px;
+    --color: #000;
+    z-index: 70;
+    overflow: visible;
+
+    &.md {
+        margin-bottom: 5px;
+    }
+}
+
+.login-entry {
+    --highlight-color-valid: var(--ion-color-primary);
+    margin-bottom: 5.625vh;
+
+    &:first-child {
+        margin-bottom: 4.166vh;
+    }
+}
+
+.auth-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-button {
+    font-family: 'Montserrat';
+    font-style: normal;
+    letter-spacing: normal;
+    font-weight: 700;
+    font-size: min(4.5vw, 2.5vh);
+    height: 5.833vh;
+    --border-radius: 5px;
+    width: 29.0625vw;
+}
+
+.forgot-button {
+    font-family: 'Montserrat';
+    font-style: normal;
+    letter-spacing: normal;
+    font-weight: 500;
+    //font-size: 0.6em;
+    font-size: min(3.25vw, 2vh);
+    margin: 0;
+}
+
+.login-logo {
+    height: 8.5416vh;
+    width: 21.5625vw;
+}
