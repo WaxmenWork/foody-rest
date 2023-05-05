@@ -62,11 +62,16 @@ ion-menu.md ion-item ion-icon {
 }
 
 ion-menu.md ion-item ion-label {
+  font-family: 'Montserrat';
   font-weight: 500;
 }
 
 ion-menu.ios ion-content {
   --padding-bottom: 20px;
+}
+
+ion-menu.ios ion-item ion-label {
+  font-family: 'Montserrat';
 }
 
 ion-menu.ios ion-list {
@@ -115,12 +120,20 @@ ion-note {
 }
 
 ion-menu ion-list {
-  background-color: var(--ion-color-secondary);
+  background-color: var(--ion-item-background);
+
+  & ion-item {
+    --background: var(--ion-item-background);
+  }
 }
 
 .menu-logo {
   display: flex;
   justify-content: center;
+}
+
+.menu-link {
+  text-decoration: none;
 }
 
 ion-item.selected {

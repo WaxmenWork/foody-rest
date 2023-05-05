@@ -1,0 +1,77 @@
+<ion-content *ngIf="loading" [fullscreen]="true">
+  <div class="flex-center">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+</ion-content>
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="restaurants"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="!loading">{{firstLetterUpperCase(vendor.vendor_display_name)}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!loading" [fullscreen]="true">
+  <img class="vendor-image" src={{vendor.mobile_banner}} alt="">
+  <div class="details-menu">
+    <ion-header class="ion-no-border">
+      <div class="details-menu-header flex-row flex-ai-center">
+        <ion-title size="large">Меню</ion-title>
+      </div>
+    </ion-header>
+    <div class="products-container">
+      <div class="list-wrap">
+        <ng-container *ngFor="let item of products">
+          <ion-card class="product-card ion-activatable" *ngIf="item.catalog_visibility != 'hidden'" (click)="presentModal(item)">
+            <ion-img src={{item.images[0][products_image]}} alt={{item.name}}/>
+            <ion-card-header>
+              <ion-card-title *ngIf="item.on_sale"><span class="old-price">{{item.regular_price}}&#8381;</span><span class="price"> {{item.sale_price}}&#8381;</span></ion-card-title>
+              <ion-card-title *ngIf="!item.on_sale"><span class="price">{{item.price}}&#8381;</span></ion-card-title>
+              <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <span>{{item.weight}}{{item.product_units.weight_unit}}</span>
+            </ion-card-content>
+            <div class="button-container">
+              <ng-container *ngIf="!productInCart(item)">
+                <ion-button *ngIf="item.attributes.length > 0 && checkAttributes(item.attributes)" shape="round" size="small" (click)="presentModal(item); $event.stopPropagation()">Добавить</ion-button>
+                <ion-button *ngIf="item.attributes.length > 0 && !checkAttributes(item.attributes)" shape="round" size="small" (click)="addToCart(item); $event.stopPropagation()">Добавить</ion-button>
+                <ion-button *ngIf="item.attributes.length == 0" shape="round" size="small" (click)="addToCart(item); $event.stopPropagation()">Добавить</ion-button>
+              </ng-container>
+              <ng-container *ngIf="productInCart(item)">
+                <div class="flex-jc-center">
+                  <div class="count-buttons">
+                    <ion-button [disabled]="item.count == 0" shape="round" size="small" (click)="removeFromCart(item); $event.stopPropagation()">-</ion-button>
+                    <div class="count-label">
+                      {{productCount(item)}}
+                    </div>
+                    <ion-button *ngIf="item.attributes.length > 0 && checkAttributes(item.attributes)" [disabled]="item.count== 99" shape="round" size="small" (click)="presentModal(item); $event.stopPropagation()">+</ion-button>
+                    <ion-button *ngIf="item.attributes.length > 0 && !checkAttributes(item.attributes)" [disabled]="item.count== 99" shape="round" size="small" (click)="addToCart(item); $event.stopPropagation()">+</ion-button>
+                    <ion-button *ngIf="item.attributes.length == 0" [disabled]="item.count== 99" shape="round" size="small" (click)="addToCart(item); $event.stopPropagation()">+</ion-button>
+                  </div>
+                </div>
+                
+              </ng-container>
+            </div>
+            <ion-ripple-effect></ion-ripple-effect>
+          </ion-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+    <!-- <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+      <ion-infinite-scroll-content loadingSpinner="crescent"></ion-infinite-scroll-content>
+    </ion-infinite-scroll> -->
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="ion-activatable flex-center" routerLink="/cart">
+      <ion-label>Корзина</ion-label>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+  </ion-toolbar>
+</ion-footer>

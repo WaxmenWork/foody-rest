@@ -1,0 +1,95 @@
+.restaurant-card {
+    max-width: 400px;
+    border-radius: 28px;
+    margin-bottom: 0;
+}
+
+.vendor-shop-img {
+    width: 18%;
+}
+
+.vendor-status-icon {
+    display: block;
+    box-sizing: border-box;
+    margin-left: 5px;
+}
+
+.vendor-shop-title {
+    font-size: min(5.8vw, 3.633vh);
+}
+
+.restaurants-list {
+    margin-left: 1%;
+    margin-bottom: 2vh;
+}
+
+.list-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 5px;
+    //padding: 12px 0;
+}
+
+.restaurant-info-icons {
+    position: absolute;
+    display: flex;
+    width: 67%;
+    top: 2%;
+    right: 2%;
+    flex-direction: column;
+    align-items: end;
+}
+
+.info-icon {
+    display: block;
+    background-color: var(--ion-color-primary);
+    padding: 3% 3% 2% 3%;
+    border-radius: 50%;
+    margin-bottom: 2%;
+
+    &:last-child {
+        background-color: var(--ion-color-secondary);
+    }
+}
+
+// .restaurants-categories {
+    
+// }
+
+// .category-item {
+    
+// }
+
+@media (min-width: 530px) {
+    .restaurant-card {
+        width: 45%;
+    }
+}
+
+@media (min-width: 576px) {
+    .restaurant-card {
+        width: 46%;
+    }
+}
+
+@media (min-width: 768px) {
+    .restaurant-card {
+        width: 45%;
+    }
+    .vendor-shop-title {
+        font-size: min(3.5vw, 2.833vh);
+    }
+}
+
+@media (min-width: 992px) {
+    .restaurant-card {
+        width: 31%;
+    }
+
+    // .restaurants-list {
+    //     margin-left: 8%;
+    // }
+}
+

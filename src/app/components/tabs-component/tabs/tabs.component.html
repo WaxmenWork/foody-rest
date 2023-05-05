@@ -1,0 +1,14 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="restaurants" routerLink="/restaurants">
+      <ion-label>Главная</ion-label>
+      <ion-icon name="home"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="cart" routerLink="/cart">
+      <ion-label>Корзина</ion-label>
+      <ion-icon name="cart"></ion-icon>
+      <ion-badge *ngIf="cartItemsCount > 0" color="secondary">{{cartItemsCount}}</ion-badge>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

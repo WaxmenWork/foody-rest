@@ -1,4 +1,26 @@
+ion-list {
+    background-color: var(--ion-background-color);
+}
+
+ion-item {
+    --background: var(--ion-background-color);
+}
+
+.keyboard-fixer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
 .login-content {
+    position: fixed;
+    min-height: 100%;
+    min-width: 100%;
     font-family: 'Montserrat';
     padding: 0 2.25em;
     z-index: 100;
@@ -31,37 +53,51 @@
     --color: #000;
     font-weight: 600;
     font-size: min(4.375vw, 2.916vh);
-    width: 52.5vw;
-    --padding-top: 2.5vh;
-    --padding-bottom: 2.5vh;
+    width: 90%;
+    margin: 0 auto;
+    --padding-top: 2.5%;
+    --padding-bottom: 2.5%;
     --background: #F9F2F0;
     border-radius: 7px;
     --padding-start: 20px;
+    --padding-end: 20px;
     --placeholder-color: var(--ion-color-primary);
-    
 }
 .login-label {
+    margin-left: 5%;
+    //margin-bottom: 1em;
     font-weight: 500;
-    height: 2.87vh;
+    height: 2.87%;
     font-size: min(4.325vw, 2.87vh);
     font-family: 'Montserrat';
     line-height: 16.9px;
-    --color: #000;
+    --color: var(--ion-text-color);
     z-index: 70;
     overflow: visible;
 
     &.md {
-        margin-bottom: 5px;
+        margin-bottom: 1em;
+    }
+
+    &.ios {
+        margin-bottom: 0.8em;
     }
 }
 
 .login-entry {
     --highlight-color-valid: var(--ion-color-primary);
-    margin-bottom: 5.625vh;
+    margin-bottom: 5.625%;
 
     &:first-child {
-        margin-bottom: 4.166vh;
+        margin-bottom: 4.166%;
     }
+
+    & ion-note {
+        margin-left: 5%;
+        //font-size: min(2.325vw, 1.87vh);
+        font-family: 'Montserrat';
+        //line-height: 16.9px;
+        }
 }
 
 .auth-buttons {

@@ -2,17 +2,28 @@
   <!-- <ion-split-pane contentId="main-content"> -->
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
+        <div class="menu-logo">
+          <ion-img src="assets/logo/FOODYLOGO.svg"></ion-img>
+        </div>
         <ion-list id="inbox-list">
-          <div class="menu-logo">
-            <ion-img src="assets/logo/FOODYLOGO.svg"></ion-img>
-          </div>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
+            <ng-container *ngIf="p.type == 'button'">
+              <ion-item *ngIf="p.logged == state || !p.logged" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+                <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                <ion-label>{{ p.title }}</ion-label>
+              </ion-item>
+            </ng-container>
+            <ng-container *ngIf="p.type == 'link'">
+              <a class="menu-link" href={{p.url}} >
+                <ion-item *ngIf="p.logged == state || !p.logged" lines="none" detail="false">
+                  <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                  <ion-label>{{ p.title }}</ion-label>
+                </ion-item>
+              </a>
+            </ng-container>
           </ion-menu-toggle>
         </ion-list>
+        <!-- <ion-button *ngIf="state" type="button" (click)="logout()">Выйти</ion-button> -->
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

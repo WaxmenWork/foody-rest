@@ -1,0 +1,107 @@
+.vendor-image {
+    display: block;
+    position: fixed;
+    top: 5%;
+    left: 0;
+    z-index: 0;
+}
+
+.details-menu {
+    position: relative;
+    box-sizing:content-box;
+    top: 28%;
+    border-radius: 28px;
+    min-height: 100%;
+    background: var(--background);
+    overflow: hidden;
+    box-shadow: 0px -10px 120px 10px var(--background);
+    z-index: 999;
+
+    & ion-title.ios {
+        position: relative;
+        top: 15px;
+        margin-bottom: 10px;
+    }
+}
+
+.product-card {
+    position: relative;
+    border-radius: 28px;
+    width: 43.75%;
+    margin: 0;
+
+    & ion-img {
+        width: 100%;
+    }
+
+    &.ios {
+        --collapse: condense;
+        width: 42.27%;
+        overflow: hidden;
+    }
+
+    & ion-card-content {
+        margin-bottom: 18%;
+    }
+}
+
+.list-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 12px 0;
+}
+
+.products-container {
+    margin-left: 10%;
+    margin-bottom: 10vh;
+}
+
+.price {
+    font-size: 0.8em;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 0.6em;
+}
+
+.details-menu-header {
+    margin-top: 15px;
+    margin-left: 20px;
+
+    & ion-title {
+        font-weight: bold;
+    }
+}
+
+.button-container {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+.count-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+
+    & ion-button {
+        flex: 0.5;
+    }
+}
+
+.count-label {
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0 5px;
+    flex: 1;
+}

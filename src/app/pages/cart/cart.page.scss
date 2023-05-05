@@ -1,0 +1,52 @@
+ion-list {
+    background-color: var(--ion-background-color);
+}
+
+ion-item {
+    --background: var(--ion-background-color);
+}
+
+.count-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex: 0.3;
+    
+    & ion-button {
+        flex: 0.8;
+    }
+}
+
+.count-label {
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0 5px;
+    flex: 1.7;
+}
+
+
+.product-img {
+    border-radius: 10px;
+    overflow: hidden;
+    width: 20%;
+    min-height: 80%;
+    object-fit: contain;
+    margin: 5px 0;
+}
+
+.cart-item {
+    width: 100%;
+
+    & ion-label {
+        padding: 0 5px;
+    }
+}
+
+.empty-cart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}

@@ -1,0 +1,93 @@
+<ion-content [scrollY]="true">
+  <img class="product-img" src={{product.images[0][products_image]}} alt={{product.name}}>
+  <div class="flex-jc-center">
+    <div class="product-container">
+      <!-- <h1>{{product.name}}</h1> -->
+      <div [innerHTML]="product.short_description"></div>
+      <div class="product-attributes">
+        <ng-container *ngIf="isExistInCart && fromCart && attributes.length > 0">
+          <div class="attribute">
+            <ion-list>
+              <ion-list-header>
+                <ion-label size="large">Выбранные опции</ion-label>
+              </ion-list-header>
+              <ion-item-group *ngFor="let attribute of attributes">
+                <ion-item-divider>
+                  <ion-label>{{attribute.attribute.name}}</ion-label>
+                </ion-item-divider>
+                <ion-item>
+                  <ion-label>{{firstLetterUpperCase(attribute.option.toString())}}</ion-label>
+                </ion-item>
+              </ion-item-group>
+            </ion-list>
+          </div>
+
+        </ng-container>
+        <ng-container *ngIf="(!isExistInCart && !fromCart) || (isExistInCart && !fromCart && attributes.length > 0)">
+          <div class="attribute" *ngFor="let attribute of product.attributes">
+            <ion-list *ngIf="attribute.visible">
+              <ion-list-header>
+                <ion-title>{{attribute.name}}</ion-title>
+              </ion-list-header>
+              <ion-radio-group [allowEmptySelection]="false" value={{attribute.options[0]}}>
+                <ion-item *ngFor="let option of attribute.options" (click)="setAttributes(attribute, option)">
+                  <ion-label>{{firstLetterUpperCase(option)}}</ion-label>
+                  <ion-radio value={{option}}></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="flex-column flex-ai-center">
+      <div class="footer-toolbar-container">
+        <div class="flex-row flex-jc-space-between">
+          <div><span>{{product.name}}</span></div>
+          <div *ngIf="product.on_sale">
+            <span class="old-price">{{product.regular_price}}&#8381;</span>
+            <span class="price"> {{product.sale_price}}&#8381;</span>
+          </div>
+          <div *ngIf="!product.on_sale">
+            <span class="price">{{product.price}}&#8381;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </ion-toolbar>
+  <ion-toolbar>
+    <div class="flex-column flex-ai-center">
+      <div class="footer-toolbar-container">
+        <div class="flex-row flex-jc-space-between">
+          <ng-container *ngIf="(!isExistInCart && !fromCart) || (isExistInCart && !fromCart && attributes.length > 0)">
+            <div class="count-buttons">
+              <ion-button [disabled]="product_count == 1" shape="round" (click)="productDecrement()">-</ion-button>
+              <div class="count-label">
+                {{product_count}}
+              </div>
+              <ion-button [disabled]="product_count == 99" shape="round" (click)="productIncrement()">+</ion-button>
+            </div>
+            <ion-button fill="solid" shape="round" (click)="productAddToCart()">Добавить</ion-button>
+          </ng-container>
+          <ng-container *ngIf="isExistInCart && (fromCart || attributes.length == 0)">
+            <div class="count-buttons">
+              <ion-button [disabled]="product_count == 0" shape="round" (click)="productDecrement()">-</ion-button>
+              <div class="count-label">
+                {{product_count}}
+              </div>
+              <ion-button [disabled]="product_count == 99" shape="round" (click)="productIncrement()">+</ion-button>
+            </div>
+            <ion-button fill="solid" shape="round" (click)="productSetCount()">Применить</ion-button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+  
+</ion-footer>

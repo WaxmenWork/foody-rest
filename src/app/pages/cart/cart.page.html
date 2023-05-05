@@ -1,0 +1,56 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button *ngIf="showBackButton" (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Корзина</ion-title>
+    <ion-button size="large" fill="clear" slot="end" *ngIf="cart.length > 0" (click)="turncateCart()"><ion-icon name="trash-outline"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <div class="app-container">
+    <div class="flex-jc-space-between flex-ai-center">
+      <div class="flex-row flex-ai-center">
+        <ion-menu-button size="large"></ion-menu-button>
+        <h1 class="app-title">Корзина</h1>
+      </div>
+      <ion-button size="large" fill="clear" slot="end" *ngIf="cart.length > 0" (click)="turncateCart()"><ion-icon name="trash-outline"></ion-icon></ion-button>
+    </div>
+    <ng-container *ngIf="cart.length > 0">
+      <ion-list>
+        <ion-item class="ion-activatable" *ngFor="let item of cart" (click)="presentModal(item.product, item.attributes)">
+          <div class="cart-item flex-jc-space-between flex-ai-center">
+            <ion-img class="product-img" src={{item.product.images[0][product_image]}}></ion-img>
+            <div class="flex-column">
+              <ion-label>{{item.product.name}}</ion-label>
+              <ion-note>{{attributesOptionsToString(item.attributes)}}</ion-note>
+            </div>
+            <div class="count-buttons">
+              <ion-button [disabled]="item.count == 0" shape="round" (click)="removeFromCart(item.product, item.attributes); $event.stopPropagation()">-</ion-button>
+              <div class="count-label">
+                {{item.count}}
+              </div>
+              <ion-button [disabled]="item.count== 99" shape="round" (click)="addToCart(item.product, item.attributes); $event.stopPropagation()">+</ion-button>
+            </div>
+          </div>
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-item>
+      </ion-list>
+      <div class="flex-jc-center">
+        <ion-button routerLink="/restaurants/{{this.cart[0].product.store.vendor_id}}" color="secondary" shape="round">Открыть меню</ion-button>
+      </div>
+    </ng-container>
+  </div>
+
+  <ng-container *ngIf="cart.length == 0">
+    <div class="empty-cart flex-center">
+      <ion-title>
+        Корзина пуста :(
+      </ion-title>
+    </div>
+</ng-container>
+  
+</ion-content>
